@@ -1,0 +1,950 @@
+/* Updated color scheme and styles */
+:root {
+    /* New color scheme with blue, red, and yellow */
+    --primary-color: #2E5BFF;    /* Blue */
+    --primary-rgb: 46, 91, 255;
+    --secondary-color: #0D1B3E;  /* Dark blue */
+    --accent-color: #FF3A5E;     /* Red */
+    --accent-rgb: 255, 58, 94;
+    --highlight-color: #FFBD2E;  /* Yellow */
+    --highlight-rgb: 255, 189, 46;
+    --light-color: #FFFFFF;
+    --dark-color: #0D1B3E;
+    --gray-color: #F2F5FF;
+    --dark-gray: #5A6C95;
+    
+    /* New gradients */
+    --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, #0070FF 100%);
+    --gradient-accent: linear-gradient(135deg, var(--accent-color) 0%, #FF6B8B 100%);
+    --gradient-mixed: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    --gradient-highlight: linear-gradient(135deg, var(--highlight-color) 0%, #FFA53E 100%);
+    
+    --shadow: 0 5px 15px rgba(46, 91, 255, 0.15);
+    --shadow-accent: 0 5px 15px rgba(255, 58, 94, 0.15);
+    --transition: all 0.3s ease;
+}
+
+/* Basic typography styling */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+    position: relative;
+    z-index: 2;
+}
+
+p, a, button, input, textarea, label, li {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Button styles */
+.btn-primary {
+    background: var(--gradient-primary);
+    color: var(--light-color);
+    box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.3);
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(var(--primary-rgb), 0.4);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: var(--gradient-primary);
+    color: var(--light-color);
+    border-color: transparent;
+}
+
+/* No background animation on body - will use dynamic-bg.css instead */
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dark-color);
+    background: transparent; /* Remove default background */
+    animation: none; /* Remove animation from body */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove section-specific backgrounds */
+.hero, .portfolio, .about, .services, .testimonials, .hire-me, .contact {
+    background: transparent;
+    position: relative;
+    z-index: 1;
+    margin: 0; /* Remove margins between sections */
+    padding: 80px 0; /* Consistent padding for all sections */
+}
+
+/* Section headers with consistent styling */
+.section-header {
+    margin-bottom: 50px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Adjustments for content cards to float over background */
+.service-card, .portfolio-item, .testimonial-slide, .info-box, .skill-item {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Blur effect for modern browsers */
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Hover effects for cards */
+.service-card:hover, .portfolio-item:hover, .skill-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(var(--primary-rgb), 0.15);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Header styling - make it transparent with blur */
+header {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 10px 0; /* Reduce padding for a smaller header */
+}
+
+/* Make the logo smaller */
+.logo h1 {
+    color: var(--primary-color);
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.6rem; /* Reduced font size */
+    margin: 0; /* Remove margin to reduce height */
+}
+
+/* Adjust the navbar for a more compact look */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 60px; /* Set a fixed height */
+}
+
+/* Make nav links more compact */
+.nav-links {
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    list-style: none;
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 500;
+    font-size: 0.95rem; /* Slightly smaller font */
+    transition: color 0.3s ease;
+    position: relative;
+    padding: 5px 0;
+}
+
+/* Make the mobile menu button smaller */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger .bar {
+    display: block;
+    width: 22px; /* Smaller width */
+    height: 2px; /* Thinner bars */
+    margin: 4px auto; /* Less spacing between bars */
+    background-color: var(--dark-color);
+    transition: all 0.3s ease;
+}
+
+/* Smaller hire me button in nav */
+.nav-links .btn-primary {
+    padding: 8px 16px; /* Smaller padding */
+    font-size: 0.9rem; /* Smaller font */
+}
+
+/* Hero section styling */
+.hero {
+    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.03) 0%, rgba(var(--accent-rgb), 0.03) 100%);
+}
+
+.hero-tagline {
+    color: var(--secondary-color);
+}
+
+.highlight {
+    color: var(--accent-color);
+}
+
+.highlight::after {
+    background-color: rgba(var(--highlight-rgb), 0.3);
+}
+
+/* Portfolio section */
+.portfolio {
+    background-color: transparent;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: var(--gradient-primary);
+    color: white;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(var(--primary-rgb), 0.15);
+}
+
+.btn-play {
+    background: var(--gradient-accent);
+}
+
+.btn-play:hover {
+    background: var(--gradient-primary);
+}
+
+/* Video player customizations */
+.progress {
+    background: var(--gradient-accent);
+}
+
+.play-pause:hover, .volume:hover, .fullscreen:hover {
+    color: var(--accent-color);
+}
+
+/* Services section */
+.service-card {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(var(--primary-rgb), 0.15);
+    background: white;
+}
+
+.service-icon i {
+    color: var(--primary-color);
+}
+
+/* Testimonials section */
+.testimonials {
+    background: transparent;
+}
+
+.quote-icon i {
+    color: var(--accent-color);
+}
+
+.dot.active {
+    background-color: var(--accent-color);
+}
+
+/* Hire Me section */
+.hire-me {
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+}
+
+.hire-me:before, .hire-me:after {
+    content: none;
+}
+
+.logo-circle {
+    background: var(--gradient-mixed);
+    box-shadow: 0 15px 30px rgba(var(--primary-rgb), 0.25);
+}
+
+.hire-me-logo h3 {
+    color: var(--primary-color);
+}
+
+.info-box {
+    background: white;
+    box-shadow: 0 15px 30px rgba(var(--primary-rgb), 0.08);
+}
+
+.contact-item .icon {
+    background-color: var(--gray-color);
+}
+
+.contact-item:hover .icon {
+    background: var(--gradient-primary);
+}
+
+.hire-me-button {
+    background: var(--gradient-accent);
+    box-shadow: 0 10px 20px rgba(var(--accent-rgb), 0.3);
+}
+
+.hire-me-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(var(--accent-rgb), 0.4);
+}
+
+.social-link:hover {
+    background: var(--gradient-primary);
+    transform: translateY(-5px);
+}
+
+/* Skills section */
+.skill-item:before {
+    background: var(--gradient-mixed);
+}
+
+.skill-item i {
+    color: var(--primary-color);
+}
+
+.skill-progress {
+    background: var(--gradient-accent);
+}
+
+/* Footer */
+footer {
+    position: relative;
+    z-index: 2;
+    margin-top: 0;
+    background-color: var(--secondary-color);
+}
+
+.footer-links a:hover {
+    color: var(--highlight-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .nav-links {
+        background-color: rgba(255, 255, 255, 0.97);
+    }
+}
+
+/* Additional dynamic elements */
+.skill-item, .service-card, .hire-me-button, .logo-circle {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.skill-item:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(var(--primary-rgb), 0.15);
+}
+
+/* Animation for elements */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.hero-content h1, .section-header h2 {
+    position: relative;
+}
+
+.hero-content h1::before, .section-header h2::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(var(--accent-rgb), 0.3);
+    z-index: -1;
+}
+
+/* Additional dynamic background elements */
+.dynamic-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    filter: blur(60px);
+    opacity: 0.1;
+    animation: float 15s infinite ease-in-out;
+}
+
+.bg-circle:nth-child(1) {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 5%;
+    background: radial-gradient(circle, var(--primary-color), transparent 70%);
+    animation-delay: 0s;
+}
+
+.bg-circle:nth-child(2) {
+    width: 400px;
+    height: 400px;
+    bottom: 10%;
+    right: 5%;
+    background: radial-gradient(circle, var(--accent-color), transparent 70%);
+    animation-delay: -5s;
+}
+
+.bg-circle:nth-child(3) {
+    width: 250px;
+    height: 250px;
+    bottom: 30%;
+    left: 25%;
+    background: radial-gradient(circle, var(--highlight-color), transparent 70%);
+    animation-delay: -10s;
+}
+
+/* Stylish highlights for text */
+.text-highlight {
+    position: relative;
+    display: inline-block;
+    color: var(--accent-color);
+    z-index: 1;
+}
+
+.text-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background-color: rgba(var(--highlight-rgb), 0.2);
+    z-index: -1;
+    transform: skewX(-12deg);
+}
+
+/* Animated borders for containers */
+.animated-border {
+    position: relative;
+}
+
+.animated-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    border-image: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--highlight-color), var(--primary-color)) 1;
+    animation: borderRotate 8s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes borderRotate {
+    0% {
+        border-image: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--highlight-color), var(--primary-color)) 1;
+    }
+    25% {
+        border-image: linear-gradient(45deg, var(--accent-color), var(--highlight-color), var(--primary-color), var(--accent-color)) 1;
+    }
+    50% {
+        border-image: linear-gradient(45deg, var(--highlight-color), var(--primary-color), var(--accent-color), var(--highlight-color)) 1;
+    }
+    75% {
+        border-image: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--highlight-color), var(--primary-color)) 1;
+    }
+    100% {
+        border-image: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--highlight-color), var(--primary-color)) 1;
+    }
+}
+
+/* Layout and container fixes */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Ensure all sections have proper spacing */
+section {
+    position: relative;
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+/* Hero section specific layout fixes */
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-color);
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+
+.hero-video {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+/* Video controls fixations */
+.video-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    padding: 30px 20px 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.custom-video-player:hover .video-controls {
+    opacity: 1;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.progress {
+    height: 100%;
+    background: var(--gradient-accent);
+    width: 0;
+    border-radius: 5px;
+}
+
+.controls-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+}
+
+.play-pause, .volume, .fullscreen {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Portfolio items grid fixes */
+.portfolio-videos {
+    margin-top: 40px;
+}
+
+.video-row {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.video-item {
+    flex: 1;
+    min-width: 300px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Services grid fixes */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Video container fixes */
+.video-container-hero, .video-container-portfolio {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.video-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.video-info h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+/* Responsive fixes for smaller screens */
+@media (max-width: 768px) {
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .video-row {
+        flex-direction: column;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-content {
+        flex-direction: column;
+    }
+    
+    .hire-me-content {
+        flex-direction: column;
+    }
+    
+    section {
+        padding: 60px 0;
+    }
+}
+
+/* Additional dynamic background elements */
+.dynamic-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    filter: blur(60px);
+    opacity: 0.1;
+    animation: float 15s infinite ease-in-out;
+}
+
+.bg-circle:nth-child(1) {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 5%;
+    background: radial-gradient(circle, var(--primary-color), transparent 70%);
+    animation-delay: 0s;
+}
+
+.bg-circle:nth-child(2) {
+    width: 400px;
+    height: 400px;
+    bottom: 10%;
+    right: 5%;
+    background: radial-gradient(circle, var(--accent-color), transparent 70%);
+    animation-delay: -5s;
+}
+
+.bg-circle:nth-child(3) {
+    width: 250px;
+    height: 250px;
+    bottom: 30%;
+    left: 25%;
+    background: radial-gradient(circle, var(--highlight-color), transparent 70%);
+    animation-delay: -10s;
+}
+
+/* Stylish highlights for text */
+.text-highlight {
+    position: relative;
+    display: inline-block;
+    color: var(--accent-color);
+    z-index: 1;
+}
+
+.text-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background-color: rgba(var(--highlight-rgb), 0.2);
+    z-index: -1;
+    transform: skewX(-12deg);
+}
+
+/* Animated borders for containers */
+.animated-border {
+    position: relative;
+}
+
+.animated-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    border-image: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--highlight-color), var(--primary-color)) 1;
+    animation: borderRotate 8s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes borderRotate {
+    0% {
+        border-image: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--highlight-color), var(--primary-color)) 1;
+    }
+    25% {
+        border-image: linear-gradient(45deg, var(--accent-color), var(--highlight-color), var(--primary-color), var(--accent-color)) 1;
+    }
+    50% {
+        border-image: linear-gradient(45deg, var(--highlight-color), var(--primary-color), var(--accent-color), var(--highlight-color)) 1;
+    }
+    75% {
+        border-image: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--highlight-color), var(--primary-color)) 1;
+    }
+    100% {
+        border-image: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--highlight-color), var(--primary-color)) 1;
+    }
+}
+
+/* Remove section dividers if any */
+section::before, section::after {
+    display: none;
+}
+
+/* Remove any remaining section-specific styling */
+.about, .contact, .services {
+    background: transparent;
+}
+
+/* Improved card styling for the unified design */
+.card, .portfolio-item, .service-card, .testimonial-slide {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+}
+
+/* Strengthen text contrast for better readability over the background */
+p, h1, h2, h3, h4, h5, h6 {
+    position: relative;
+    z-index: 2;
+}
+
+/* Enhanced text styling for better visibility on background */
+.section-header h2 {
+    font-size: 2.5rem;
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+    z-index: 2;
+}
+
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 5px;
+}
+
+/* Enhance content cards for better contrast */
+.card-content, .service-card-content, .testimonial-content, .info-box-content {
+    padding: 25px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Hero section specific enhancements */
+.hero-tagline {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Add hover effects to buttons for better visual hierarchy */
+.btn {
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    left: 0;
+}
+
+/* Consistent background for containers that need it */
+.content-box {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+}
+
+/* Hero buttons restored */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+/* Add back nav hover effects and animations */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Mobile menu styles */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+    
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+    
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+    
+    .nav-links {
+        position: fixed;
+        left: -100%;
+        top: 60px; /* Reduced from taller header */
+        gap: 0;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 20px 0;
+    }
+    
+    .nav-links li {
+        margin: 10px 0;
+    }
+    
+    .nav-links.active {
+        left: 0;
+    }
+} 

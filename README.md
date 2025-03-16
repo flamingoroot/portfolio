@@ -151,4 +151,4 @@ Project assignment showcasing various editing techniques and skills.
 - **Ali Abdaal Style Editing**: Educational content edited with fast-paced cuts, engaging b-roll, and informative overlays.
 - **Documentary Edit**: Narrative-driven editing with a focus on storytelling, pacing, and emotional impact.
 - **Creative Ideas**: Concept-based content with dynamic editing to enhance the educational message.
-- **Cohort Assignment**: Structured editing project demonstrating technical proficiency and creative decision-making. 
+- **Cohort Assignment**: Structured editing project demonstrating technical proficiency and creative decision-making.
